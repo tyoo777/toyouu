@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Happy Birthday Nazwa</title>
+
+<style>
+*{box-sizing:border-box}
+
+body{
+margin:0;
+font-family:system-ui;
+background:linear-gradient(160deg,#ff2f92,#ff5fb2,#ff9fd4);
+color:white;
+overflow:hidden;
+}
+
+.page{
+position:absolute;
+inset:0;
+display:flex;
+justify-content:center;
+align-items:center;
+opacity:0;
+pointer-events:none;
+transition:.6s;
+padding:15px;
+}
+
+.page.active{opacity:1;pointer-events:auto}
+
+.card{
+width:100%;
+max-width:360px;
+background:linear-gradient(135deg,#ff2f92,#ff6fb5);
+border-radius:26px;
+padding:28px 22px;
+text-align:right;
+box-shadow:0 15px 40px #ff2f9290;
+animation:pop .5s;
+}
+
+@keyframes pop{
+from{transform:scale(.9);opacity:0}
+to{transform:none;opacity:1}
+}
+
+h1{margin:0;font-size:26px}
+h2{margin:6px 0;font-weight:400;font-size:16px}
+p{line-height:1.6;font-size:14px}
+
+button{
+margin-top:18px;
+width:100%;
+padding:13px;
+border:none;
+border-radius:30px;
+background:#ffd3ea;
+color:#ff2f92;
+font-weight:600;
+}
+
+#game{
+width:230px;
+height:260px;
+margin:15px 0 15px auto;
+background:#ff8cc6;
+border-radius:18px;
+position:relative;
+overflow:hidden;
+}
+
+.gift{position:absolute;font-size:24px}
+
+.heart{
+position:fixed;
+animation:float 10s linear infinite;
+}
+
+@keyframes float{
+from{transform:translateY(100vh)}
+to{transform:translateY(-10vh)}
+}
+
+.end{font-size:14px;line-height:1.7}
+</style>
+</head>
+
+<body>
+
+<audio autoplay loop>
+<source src="https://cdn.pixabay.com/download/audio/2022/03/15/audio_6c1b1b6d3b.mp3">
+</audio>
+
+<audio id="click">
+<source src="https://cdn.pixabay.com/download/audio/2022/03/10/audio_3d35f3f0d4.mp3">
+</audio>
+
+<div class="page active" id="p1">
+<div class="card">
+<h1>Happy Birthday 🎉</h1>
+<h2>Nazwa Stefany Kamaratih</h2>
+<p>Hari ini adalah hari paling indah.</p>
+<button onclick="go(2)">Mulai 💗</button>
+</div>
+</div>
+
+<div class="page" id="p2">
+<div class="card">
+<p id="typing"></p>
+<button onclick="go(3)">Main Game 🎮</button>
+</div>
+</div>
+
+<div class="page" id="p3">
+<div class="card">
+<p>Tangkap hadiah 🎁</p>
+<div id="game"></div>
+<p>Skor: <span id="score">0</span></p>
+<button onclick="go(4)">Lanjut ➡</button>
+</div>
+</div>
+
+<div class="page" id="p4">
+<div class="card end">
+Terima kasih sudah bermain 💗<br><br>
+
+Semoga Nazwa selalu bahagia,<br>
+panjang umur,<br>
+sehat selalu,<br>
+dan semua mimpi Nazwa tercapai ✨<br><br>
+
+From : Someone who cares 🤍
+</div>
+</div>
+
+<script>
+const pages=document.querySelectorAll(".page");
+let cur=0;
+
+function go(n){
+click.play();
+pages[cur].classList.remove("active");
+cur=n-1;
+pages[cur].classList.add("active");
+}
+
+/* typing */
+let text="Hari ini tentang Nazwa. Tentang senyum yang manis, mimpi besar, dan masa depan yang cerah 💗";
+let i=0;
+(function type(){
+if(i<text.length){
+typing.innerHTML+=text[i++];
+setTimeout(type,40);
+}})();
+
+/* hearts */
+setInterval(()=>{
+let h=document.createElement("div");
+h.className="heart";
+h.innerHTML="💗";
+h.style.left=Math.random()*100+"%";
+document.body.appendChild(h);
+setTimeout(()=>h.remove(),9000);
+},600);
+
+/* game */
+let score=0;
+setInterval(()=>{
+if(!p3.classList.contains("active"))return;
+
+let g=document.createElement("div");
+g.className="gift";
+g.innerHTML="🎁";
+g.style.left=Math.random()*200+"px";
+g.style.top="0";
+game.appendChild(g);
+
+let fall=setInterval(()=>{
+g.style.top=(g.offsetTop+4)+"px";
+if(g.offsetTop>230){g.remove();clearInterval(fall);}
+},30);
+
+g.onclick=()=>{
+score++;
+scoreEl=document.getElementById("score");
+scoreEl.innerHTML=score;
+g.remove();
+clearInterval(fall);
+};
+
+},900);
+</script>
+
+</body>
+</html>
