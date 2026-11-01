@@ -1,0 +1,159 @@
+<!doctype html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Modul 5: Indikator dasar · Rangga Prasetio</title>
+<meta name="description" content="Moving average dan RSI, serta batas penggunaannya.">
+<meta property="og:title" content="Modul 5: Indikator dasar · Rangga Prasetio">
+<meta property="og:description" content="Moving average dan RSI, serta batas penggunaannya.">
+<meta property="og:type" content="website">
+<meta name="theme-color" content="#8b5cf6">
+<script>document.documentElement.classList.add("js");try{document.documentElement.setAttribute("data-theme",localStorage.getItem("rp-theme")==="light"?"light":"dark")}catch(e){document.documentElement.setAttribute("data-theme","dark")}</script>
+<link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&family=Sora:wght@500;600;700&display=swap">
+<link rel="stylesheet" href="assets/style.css">
+<script>try{var t=localStorage.getItem('rp-theme');if(t)document.documentElement.dataset.theme=t}catch(e){}</script>
+</head>
+<body>
+<a class="skip" href="#main">Lewati ke konten</a>
+<header class="site-header">
+  <div class="wrap bar">
+    <a class="brand" href="index.html" aria-label="Rangga Prasetio, beranda"><img class="brand-logo" src="assets/img/logo.jpg" width="44" height="44" alt="Logo Best Forex Trader"><span>Rangga Prasetio</span></a>
+    <nav class="nav" id="nav" aria-label="Menu utama"><a href="index.html">Beranda</a><a href="tentang.html">Tentang</a><a href="portofolio.html">Portofolio</a><a href="belajar.html" aria-current="page">Belajar</a><a href="kalkulator.html">Alat</a><a href="kontak.html">Kontak</a></nav>
+    <div class="tools">
+      <button class="icon-btn" id="searchBtn" type="button" aria-label="Cari halaman (Ctrl+K)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M11 4a7 7 0 1 0 0 14 7 7 0 0 0 0-14zM21 21l-4.3-4.3"/></svg></button>
+      <button class="icon-btn" id="themeToggle" type="button" aria-label="Ganti tema"></button>
+      <button class="icon-btn menu-btn" id="menuBtn" type="button" aria-expanded="false" aria-controls="nav">Menu</button>
+    </div>
+  </div>
+</header>
+<nav class="tabbar" aria-label="Navigasi cepat"><a href="index.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 11l9-7 9 7v9a1 1 0 0 1-1 1h-5v-6h-6v6H4a1 1 0 0 1-1-1z"/></svg><span>Beranda</span></a><a href="belajar.html" aria-current="page"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 19.5V5a2 2 0 0 1 2-2h13v15H6a2 2 0 0 0-2 2zM4 19.5A2 2 0 0 0 6 22h13v-4"/></svg><span>Belajar</span></a><a href="portofolio.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 7h18v12H3zM9 7V5h6v2"/></svg><span>Portofolio</span></a><a href="kalkulator.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 3h14v18H5zM8 7h8M8 12h2M14 12h2M8 16h2M14 16h2"/></svg><span>Alat</span></a><a href="kontak.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 5h18v14H3zM3 7l9 6 9-6"/></svg><span>Kontak</span></a></nav>
+<main id="main"><div class="wrap">
+<div class="article">
+<p class="crumb"><a href="belajar.html">Belajar forex</a> / Modul 5 dari 6</p>
+<h1>Indikator dasar</h1>
+<p class="lead">Indikator dihitung dari harga itu sendiri. Ia tidak melihat masa depan. Karena itu, indikator sebaiknya dipakai sebagai pendamping grafik, bukan sumber keputusan tunggal.</p>
+
+<h2>Moving average</h2>
+<p>Moving average (MA) adalah rata-rata harga penutupan selama sejumlah periode tertentu. MA 20 bergerak lebih cepat mengikuti harga, sedangkan MA 50 lebih lambat dan lebih halus.</p>
+<p>Persilangan sering dibaca sebagai perubahan arah. Ketika MA 20 memotong MA 50 ke atas, sebagian trader menganggapnya awal tren naik. Ketika memotong ke bawah, awal tren turun.</p>
+<figure>
+  <img src="assets/img/chart-moving-average.png" width="1200" height="640" loading="lazy" alt="Grafik harga dengan MA 20 dan MA 50, titik persilangan ditandai">
+  <figcaption>MA 20 yang memotong MA 50 ke atas. Ilustrasi dari data simulasi.</figcaption>
+</figure>
+<p>Kelemahannya: moving average tertinggal. Sinyal baru muncul setelah harga bergerak. Saat pasar sideways, persilangan sering memberi sinyal palsu berulang kali.</p>
+
+<h2>RSI</h2>
+<p>Relative Strength Index (RSI) mengukur kekuatan momentum pada skala 0 sampai 100. Nilai di atas 70 sering disebut jenuh beli (overbought), dan di bawah 30 disebut jenuh jual (oversold).</p>
+<figure>
+  <img src="assets/img/chart-rsi.png" width="1200" height="660" loading="lazy" alt="Grafik harga di atas dan RSI di bawah dengan garis 70 dan 30">
+  <figcaption>RSI di panel bawah. Garis 70 dan 30 membantu melihat kondisi jenuh beli dan jenuh jual.</figcaption>
+</figure>
+<div class="callout">
+  <p><strong>Jenuh beli tidak sama dengan harga pasti turun.</strong> Di tren yang kuat, RSI bisa bertahan di atas 70 cukup lama. Lebih berguna melihat RSI bersama struktur harga dan arah tren.</p>
+</div>
+
+<h2>Cara memakai bersama</h2>
+<p>Indikator akan lebih berguna jika dikombinasikan dengan konteks yang sudah dipelajari sebelumnya. Contoh susunan sederhana:</p>
+<ul>
+  <li>Tren naik sudah terlihat (HH dan HL), dan harga berada di atas MA 50.</li>
+  <li>Harga turun ke support atau MA 20, lalu RSI tidak berada di zona jenuh jual.</li>
+  <li>Stop loss ditentukan di bawah support sebelum masuk.</li>
+</ul>
+<p>Susunan ini hanya contoh belajar. Ia tidak menjamin hasil, dan perlu dicoba di akun demo sebelum dipakai dengan uang nyata.</p>
+
+<h2>Memilih periode indikator</h2>
+<p>Periode moving average menentukan seberapa cepat ia bereaksi. Tidak ada angka yang paling benar, tetapi beberapa pasangan umum dipakai:</p>
+<div class="table-wrap">
+  <table>
+    <thead>
+      <tr><th scope="col">Pasangan MA</th><th scope="col">Kegunaan umum</th><th scope="col">Sifat</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>MA 9 dan MA 21</td><td>Trading jangka sangat pendek</td><td>Cepat, banyak sinyal palsu</td></tr>
+      <tr><td>MA 20 dan MA 50</td><td>Swing jangka pendek sampai menengah</td><td>Seimbang antara cepat dan halus</td></tr>
+      <tr><td>MA 100 dan MA 200</td><td>Arah jangka panjang</td><td>Lambat, sinyal lebih jarang</td></tr>
+    </tbody>
+  </table>
+</div>
+<p>Pilih satu atau dua indikator dan pakai secara konsisten. Mengganti-ganti indikator setelah setiap kerugian biasanya membuat keputusan tidak bisa diuji.</p>
+
+<h2>Divergensi RSI</h2>
+<p>Divergensi terjadi ketika harga membuat puncak yang lebih tinggi, tetapi RSI membuat puncak yang lebih rendah. Ini menandakan momentum naik mulai melemah, meskipun harga masih naik. Kebalikannya berlaku untuk lembah.</p>
+<p>Divergensi adalah peringatan, bukan kepastian. Di tren yang sangat kuat, divergensi bisa muncul beberapa kali sebelum harga benar-benar berbalik. Gunakan bersama level harga dan stop loss.</p>
+
+<h2>Kesalahan umum</h2>
+<ul>
+  <li><strong>Menumpuk indikator yang sama.</strong> MA, EMA, dan SMA dengan periode dekat hampir memberi informasi yang sama.</li>
+  <li><strong>Menganggap sinyal selalu benar.</strong> Indikator dihitung dari harga, sehingga ia tidak bisa menjamin arah berikutnya.</li>
+  <li><strong>Mengoptimalkan periode sampai cocok.</strong> Jika periode dipilih hanya karena cocok dengan data masa lalu, hasilnya sering gagal di periode berikutnya.</li>
+</ul>
+
+<h2>Latihan</h2>
+<p>Pasang MA 20 dan MA 50 di H4 pada satu pasangan. Catat setiap persilangan selama dua minggu, lalu tandai mana yang diikuti tren dan mana yang berbalik. Hasilnya akan menunjukkan seberapa sering indikator ini cocok dengan pasar yang Anda pilih.</p>
+
+<h2>Ringkasan modul ini</h2>
+<ul>
+  <li>Moving average merangkum harga dalam periode tertentu. Periode yang lebih pendek bereaksi lebih cepat.</li>
+  <li>RSI dapat menunjukkan melemahnya momentum melalui divergensi.</li>
+  <li>Gunakan sedikit indikator, uji secara konsisten, dan selalu kombinasikan dengan struktur harga.</li>
+</ul>
+
+<details class="check">
+  <summary>Apakah MA 200 selalu lebih baik dari MA 50?</summary>
+  <p>Tidak selalu. MA yang lebih panjang lebih lambat dan lebih sedikit memberi sinyal. Pilihan periode tergantung pada timeframe dan gaya trading. Tidak ada angka yang berlaku untuk semua kondisi.</p>
+</details>
+
+<div class="complete-row">
+  <a class="btn btn-video" href="https://youtu.be/nhG4bAMDmIg?si=1Fa1uHrgoIPfdCPc" target="_blank" rel="noopener noreferrer"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg>Tonton video penjelasan modul 5</a>
+  <button type="button" class="btn btn-primary" data-complete="5" aria-pressed="false">Tandai modul ini selesai</button>
+  <a class="btn btn-ghost" href="kuis.html">Kerjakan kuis akhir</a>
+</div>
+</div>
+<nav class="steps-pager" aria-label="Navigasi modul">
+  <a href="modul-4.html"><small>Modul sebelumnya</small><span>Modul 4: Tren, support, dan resistance</span></a>
+  <a href="modul-6.html" class="next"><small>Modul berikutnya</small><span>Modul 6: Risiko dan psikologi</span></a>
+</nav>
+</div></main>
+<dialog class="palette" id="palette" aria-label="Cari halaman">
+  <div class="palette-box">
+    <input class="search" id="paletteInput" type="search" placeholder="Cari halaman…" autocomplete="off" aria-label="Cari halaman">
+    <ul class="palette-list" id="paletteList"></ul>
+    <p class="palette-hint">Tekan Ctrl+K atau / untuk membuka pencarian.</p>
+  </div>
+</dialog>
+<footer class="site-footer">
+  <div class="wrap">
+    <div class="foot-grid">
+      <div>
+        <h3>Rangga Prasetio</h3>
+        <p>Edukasi forex untuk pemula, dengan fokus pada manajemen risiko dan kebiasaan belajar yang disiplin.</p>
+      </div>
+      <div>
+        <h3>Halaman</h3>
+        <ul>
+          <li><a href="belajar.html">Belajar forex</a></li>
+          <li><a href="portofolio.html">Portofolio</a></li>
+          <li><a href="kalkulator.html">Kalkulator posisi</a></li>
+          <li><a href="risiko.html">Peringatan risiko</a></li>
+        </ul>
+      </div>
+      <div>
+        <h3>Kontak</h3>
+        <ul>
+          <li><a href="mailto:ciomr3772@gmail.com">ciomr3772@gmail.com</a></li>
+          <li><a href="https://wa.me/6285196990449" rel="noopener">WhatsApp 0851-9699-0449</a></li>
+        </ul>
+      </div>
+    </div>
+    <p class="legal">Materi di situs ini bersifat edukasi dan bukan nasihat investasi. Forex dan CFD berisiko tinggi dan bisa menyebabkan kerugian sebagian atau seluruh modal. Baca <a href="risiko.html">peringatan risiko</a> sebelum mencoba trading.</p>
+    <p class="legal">&copy; 2026 Rangga Prasetio. Grafik pada situs ini adalah ilustrasi dari data simulasi.</p>
+  </div>
+</footer>
+<script src="assets/app.js" defer></script>
+<script src="assets/extras.js" defer></script>
+</body>
+</html>

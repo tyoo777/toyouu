@@ -1,0 +1,156 @@
+<!doctype html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Dashboard jurnal · Rangga Prasetio</title>
+<meta name="description" content="Contoh dashboard jurnal trading dengan data contoh yang bisa diganti.">
+<meta property="og:title" content="Dashboard jurnal · Rangga Prasetio">
+<meta property="og:description" content="Contoh dashboard jurnal trading dengan data contoh yang bisa diganti.">
+<meta property="og:type" content="website">
+<meta name="theme-color" content="#8b5cf6">
+<script>document.documentElement.classList.add("js");try{document.documentElement.setAttribute("data-theme",localStorage.getItem("rp-theme")==="light"?"light":"dark")}catch(e){document.documentElement.setAttribute("data-theme","dark")}</script>
+<link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&family=Sora:wght@500;600;700&display=swap">
+<link rel="stylesheet" href="assets/style.css">
+<script>try{var t=localStorage.getItem('rp-theme');if(t)document.documentElement.dataset.theme=t}catch(e){}</script>
+</head>
+<body>
+<a class="skip" href="#main">Lewati ke konten</a>
+<header class="site-header">
+  <div class="wrap bar">
+    <a class="brand" href="index.html" aria-label="Rangga Prasetio, beranda"><img class="brand-logo" src="assets/img/logo.jpg" width="44" height="44" alt="Logo Best Forex Trader"><span>Rangga Prasetio</span></a>
+    <nav class="nav" id="nav" aria-label="Menu utama"><a href="index.html">Beranda</a><a href="tentang.html">Tentang</a><a href="portofolio.html" aria-current="page">Portofolio</a><a href="belajar.html">Belajar</a><a href="kalkulator.html">Alat</a><a href="kontak.html">Kontak</a></nav>
+    <div class="tools">
+      <button class="icon-btn" id="searchBtn" type="button" aria-label="Cari halaman (Ctrl+K)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M11 4a7 7 0 1 0 0 14 7 7 0 0 0 0-14zM21 21l-4.3-4.3"/></svg></button>
+      <button class="icon-btn" id="themeToggle" type="button" aria-label="Ganti tema"></button>
+      <button class="icon-btn menu-btn" id="menuBtn" type="button" aria-expanded="false" aria-controls="nav">Menu</button>
+    </div>
+  </div>
+</header>
+<nav class="tabbar" aria-label="Navigasi cepat"><a href="index.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 11l9-7 9 7v9a1 1 0 0 1-1 1h-5v-6h-6v6H4a1 1 0 0 1-1-1z"/></svg><span>Beranda</span></a><a href="belajar.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 19.5V5a2 2 0 0 1 2-2h13v15H6a2 2 0 0 0-2 2zM4 19.5A2 2 0 0 0 6 22h13v-4"/></svg><span>Belajar</span></a><a href="portofolio.html" aria-current="page"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 7h18v12H3zM9 7V5h6v2"/></svg><span>Portofolio</span></a><a href="kalkulator.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 3h14v18H5zM8 7h8M8 12h2M14 12h2M8 16h2M14 16h2"/></svg><span>Alat</span></a><a href="kontak.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 5h18v14H3zM3 7l9 6 9-6"/></svg><span>Kontak</span></a></nav>
+<main id="main"><div class="wrap">
+<section class="page-head">
+  <p class="crumb"><a href="portofolio.html">Portofolio</a> / Dashboard jurnal</p>
+  <h1>Dashboard jurnal trading</h1>
+  <p>Contoh tampilan jurnal: saldo, win rate, rata-rata R, kurva ekuitas, dan riwayat trade. Angka di bawah dibuat dari data contoh untuk memperlihatkan cara membacanya.</p>
+</section>
+
+<section class="section">
+  <div class="notice banner-sample" role="note">
+    <p><strong>Data contoh.</strong> Ini bukan hasil trading nyata. Ganti dengan catatan jurnal Anda sendiri sebelum dipakai untuk menilai kinerja.</p>
+  </div>
+
+  <div class="filters">
+    <div class="field">
+      <label for="pairFilter">Pasangan</label>
+      <select class="select" id="pairFilter">
+        <option value="Semua">Semua pasangan</option>
+      </select>
+    </div>
+    <p class="muted">Modal awal $5.000 dengan risiko 1% per trade. Lot dihitung dari risiko itu.</p>
+  </div>
+
+  <div class="kpis">
+    <div class="kpi"><span>Saldo akhir</span><strong id="kBal">–</strong></div>
+    <div class="kpi"><span>Return</span><strong id="kRet">–</strong></div>
+    <div class="kpi"><span>Win rate</span><strong id="kWin">–</strong></div>
+    <div class="kpi"><span>Rata-rata R</span><strong id="kAvgR">–</strong></div>
+    <div class="kpi"><span>Profit factor</span><strong id="kPF">–</strong></div>
+    <div class="kpi"><span>Drawdown maks.</span><strong id="kDD">–</strong></div>
+    <div class="kpi"><span>Jumlah trade</span><strong id="kN">–</strong></div>
+  </div>
+
+  <div class="dash" id="jurnal">
+    <div class="panel">
+      <h3>Kurva ekuitas</h3>
+      <p class="sub">Saldo setelah setiap trade. Arahkan kursor ke titik untuk melihat nilainya.</p>
+      <div class="chart-wrap">
+        <svg id="equitySvg" role="img" aria-label="Kurva ekuitas dari data contoh"></svg>
+      </div>
+    </div>
+    <div class="panel">
+      <h3>Hasil per bulan</h3>
+      <p class="sub">Total P/L setiap bulan. Hijau untuk untung, merah untuk rugi.</p>
+      <div class="chart-wrap">
+        <svg id="monthSvg" role="img" aria-label="Hasil per bulan dari data contoh"></svg>
+      </div>
+    </div>
+    <div class="panel">
+      <h3>12 trade terakhir</h3>
+      <p class="sub">Hasil dinyatakan dalam R, yaitu kelipatan risiko per trade. Trade yang kalah bernilai −1 R.</p>
+      <div class="tbl-scroll">
+        <table>
+          <thead>
+            <tr>
+              <th scope="col">Tanggal</th>
+              <th scope="col">Pasangan</th>
+              <th scope="col">Arah</th>
+              <th scope="col">Lot</th>
+              <th scope="col">Hasil</th>
+              <th scope="col">P/L</th>
+              <th scope="col">Saldo</th>
+            </tr>
+          </thead>
+          <tbody id="tradeBody"></tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="section-head">
+    <h2>Cara membaca angkanya</h2>
+    <p>Empat ukuran yang paling sering dipakai untuk menilai jurnal.</p>
+  </div>
+  <div class="grid">
+    <div class="card"><h3>Win rate</h3><p>Persentase trade yang untung. Win rate 40% bisa tetap menguntungkan jika rasio untung dan rugi cukup besar.</p></div>
+    <div class="card"><h3>Rata-rata R</h3><p>Hasil rata-rata per trade dalam kelipatan risiko. Lebih mudah dibandingkan antar periode daripada nominal rupiah atau dolar.</p></div>
+    <div class="card"><h3>Profit factor</h3><p>Total untung dibagi total rugi. Di atas 1 berarti secara keseluruhan jurnal menghasilkan.</p></div>
+    <div class="card"><h3>Drawdown maksimum</h3><p>Penurunan terbesar dari puncak saldo. Ukuran ini sering lebih penting daripada return.</p></div>
+  </div>
+</section>
+
+</div></main>
+<dialog class="palette" id="palette" aria-label="Cari halaman">
+  <div class="palette-box">
+    <input class="search" id="paletteInput" type="search" placeholder="Cari halaman…" autocomplete="off" aria-label="Cari halaman">
+    <ul class="palette-list" id="paletteList"></ul>
+    <p class="palette-hint">Tekan Ctrl+K atau / untuk membuka pencarian.</p>
+  </div>
+</dialog>
+<footer class="site-footer">
+  <div class="wrap">
+    <div class="foot-grid">
+      <div>
+        <h3>Rangga Prasetio</h3>
+        <p>Edukasi forex untuk pemula, dengan fokus pada manajemen risiko dan kebiasaan belajar yang disiplin.</p>
+      </div>
+      <div>
+        <h3>Halaman</h3>
+        <ul>
+          <li><a href="belajar.html">Belajar forex</a></li>
+          <li><a href="portofolio.html">Portofolio</a></li>
+          <li><a href="kalkulator.html">Kalkulator posisi</a></li>
+          <li><a href="risiko.html">Peringatan risiko</a></li>
+        </ul>
+      </div>
+      <div>
+        <h3>Kontak</h3>
+        <ul>
+          <li><a href="mailto:ciomr3772@gmail.com">ciomr3772@gmail.com</a></li>
+          <li><a href="https://wa.me/6285196990449" rel="noopener">WhatsApp 0851-9699-0449</a></li>
+        </ul>
+      </div>
+    </div>
+    <p class="legal">Materi di situs ini bersifat edukasi dan bukan nasihat investasi. Forex dan CFD berisiko tinggi dan bisa menyebabkan kerugian sebagian atau seluruh modal. Baca <a href="risiko.html">peringatan risiko</a> sebelum mencoba trading.</p>
+    <p class="legal">&copy; 2026 Rangga Prasetio. Grafik pada situs ini adalah ilustrasi dari data simulasi.</p>
+  </div>
+</footer>
+<script src="assets/app.js" defer></script>
+<script src="assets/extras.js" defer></script>
+</body>
+</html>

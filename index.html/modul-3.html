@@ -1,0 +1,164 @@
+<!doctype html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Modul 3: Membaca candlestick · Rangga Prasetio</title>
+<meta name="description" content="Anatomi candle, pola dasar, dan membaca beberapa timeframe.">
+<meta property="og:title" content="Modul 3: Membaca candlestick · Rangga Prasetio">
+<meta property="og:description" content="Anatomi candle, pola dasar, dan membaca beberapa timeframe.">
+<meta property="og:type" content="website">
+<meta name="theme-color" content="#8b5cf6">
+<script>document.documentElement.classList.add("js");try{document.documentElement.setAttribute("data-theme",localStorage.getItem("rp-theme")==="light"?"light":"dark")}catch(e){document.documentElement.setAttribute("data-theme","dark")}</script>
+<link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&family=Sora:wght@500;600;700&display=swap">
+<link rel="stylesheet" href="assets/style.css">
+<script>try{var t=localStorage.getItem('rp-theme');if(t)document.documentElement.dataset.theme=t}catch(e){}</script>
+</head>
+<body>
+<a class="skip" href="#main">Lewati ke konten</a>
+<header class="site-header">
+  <div class="wrap bar">
+    <a class="brand" href="index.html" aria-label="Rangga Prasetio, beranda"><img class="brand-logo" src="assets/img/logo.jpg" width="44" height="44" alt="Logo Best Forex Trader"><span>Rangga Prasetio</span></a>
+    <nav class="nav" id="nav" aria-label="Menu utama"><a href="index.html">Beranda</a><a href="tentang.html">Tentang</a><a href="portofolio.html">Portofolio</a><a href="belajar.html" aria-current="page">Belajar</a><a href="kalkulator.html">Alat</a><a href="kontak.html">Kontak</a></nav>
+    <div class="tools">
+      <button class="icon-btn" id="searchBtn" type="button" aria-label="Cari halaman (Ctrl+K)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M11 4a7 7 0 1 0 0 14 7 7 0 0 0 0-14zM21 21l-4.3-4.3"/></svg></button>
+      <button class="icon-btn" id="themeToggle" type="button" aria-label="Ganti tema"></button>
+      <button class="icon-btn menu-btn" id="menuBtn" type="button" aria-expanded="false" aria-controls="nav">Menu</button>
+    </div>
+  </div>
+</header>
+<nav class="tabbar" aria-label="Navigasi cepat"><a href="index.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 11l9-7 9 7v9a1 1 0 0 1-1 1h-5v-6h-6v6H4a1 1 0 0 1-1-1z"/></svg><span>Beranda</span></a><a href="belajar.html" aria-current="page"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 19.5V5a2 2 0 0 1 2-2h13v15H6a2 2 0 0 0-2 2zM4 19.5A2 2 0 0 0 6 22h13v-4"/></svg><span>Belajar</span></a><a href="portofolio.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 7h18v12H3zM9 7V5h6v2"/></svg><span>Portofolio</span></a><a href="kalkulator.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 3h14v18H5zM8 7h8M8 12h2M14 12h2M8 16h2M14 16h2"/></svg><span>Alat</span></a><a href="kontak.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 5h18v14H3zM3 7l9 6 9-6"/></svg><span>Kontak</span></a></nav>
+<main id="main"><div class="wrap">
+<div class="article">
+<p class="crumb"><a href="belajar.html">Belajar forex</a> / Modul 3 dari 6</p>
+<h1>Membaca candlestick</h1>
+<p class="lead">Candlestick merangkum empat harga dalam satu periode waktu: pembukaan, tertinggi, terendah, dan penutupan. Dengan membaca candle, Anda melihat siapa yang lebih kuat pada periode itu, pembeli atau penjual.</p>
+
+<h2>Anatomi satu candle</h2>
+<p>Badan candle menunjukkan jarak antara harga pembukaan (open) dan penutupan (close). Sumbu atau ekor menunjukkan harga tertinggi (high) dan terendah (low) yang sempat dicapai.</p>
+<figure>
+  <img src="assets/img/chart-anatomi-candle.png" width="1200" height="600" loading="lazy" alt="Candle hijau dengan label open, close, high, dan low">
+  <figcaption>Candle hijau berarti harga penutupan di atas harga pembukaan. Ilustrasi dari data simulasi.</figcaption>
+</figure>
+
+<h2>Hijau dan merah</h2>
+<p>Candle hijau (bullish) berarti harga naik selama periode itu. Candle merah (bearish) berarti harga turun. Warnanya bisa diubah di platform, jadi selalu baca dari posisi open dan close, bukan hanya dari warna.</p>
+
+<h2>Timeframe: periode satu candle</h2>
+<p>Satu candle bisa mewakili satu menit (M1), lima belas menit (M15), satu jam (H1), empat jam (H4), atau satu hari (D1). Timeframe yang lebih besar biasanya lebih tenang dan lebih andal untuk melihat arah. Timeframe kecil lebih ramai dan sering menipu.</p>
+<figure>
+  <img src="assets/img/chart-timeframe.png" width="1200" height="540" loading="lazy" alt="Tiga grafik candle dengan timeframe M15, H1, dan H4 untuk pasangan yang sama">
+  <figcaption>Pasangan yang sama dilihat dari tiga timeframe. Pakai timeframe besar untuk arah, lalu timeframe kecil untuk mencari titik masuk.</figcaption>
+</figure>
+
+<h2>Pola dasar</h2>
+<p>Beberapa candle yang berurutan kadang membentuk pola. Pola hanya memberi konteks. Ia lebih berarti jika terjadi di level penting atau sejalan dengan arah tren.</p>
+<div class="table-wrap">
+  <table>
+    <thead>
+      <tr><th scope="col">Pola</th><th scope="col">Ciri</th><th scope="col">Arti sederhana</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>Bullish engulfing</td><td>Candle hijau menelan seluruh badan candle merah sebelumnya</td><td>Tekanan jual mungkin melemah</td></tr>
+      <tr><td>Pin bar</td><td>Ekor panjang dan badan kecil</td><td>Harga ditolak di level itu</td></tr>
+      <tr><td>Doji</td><td>Open dan close hampir sama</td><td>Pasar ragu dan belum punya arah</td></tr>
+    </tbody>
+  </table>
+</div>
+<figure>
+  <img src="assets/img/chart-pola-engulfing.png" width="1200" height="600" loading="lazy" alt="Contoh pola bullish engulfing dengan kotak penanda">
+  <figcaption>Contoh bullish engulfing. Kotak menandai candle hijau yang menelan candle merah sebelumnya.</figcaption>
+</figure>
+
+<div class="callout">
+  <p><strong>Pola bukan jaminan.</strong> Satu pola bisa gagal. Gunakan pola sebagai alasan tambahan, bukan satu-satunya alasan, dan pastikan stop loss sudah ditentukan sebelum masuk.</p>
+</div>
+
+<h2>Langkah membaca candle</h2>
+<p>Agar candle tidak dibaca secara terpisah, gunakan urutan yang sama setiap kali:</p>
+<ol>
+  <li><strong>Timeframe besar dulu.</strong> Lihat H4 atau D1 untuk menentukan arah utama.</li>
+  <li><strong>Tren.</strong> Apakah pasar membentuk higher high dan higher low, atau sebaliknya?</li>
+  <li><strong>Level.</strong> Di mana support atau resistance terdekat?</li>
+  <li><strong>Pola di level.</strong> Pola candle hanya bermakna jika muncul di level penting.</li>
+  <li><strong>Konfirmasi close.</strong> Tunggu candle tutup sebelum mengambil keputusan.</li>
+</ol>
+
+<h2>Candle yang belum tutup</h2>
+<p>Candle yang sedang berjalan bisa berubah sampai periodenya selesai. Sebuah candle yang terlihat seperti pin bar di tengah periode bisa berubah menjadi candle biasa, atau sebaliknya, ketika periode itu berakhir. Karena itu, sinyal sebaiknya dibaca dari candle yang sudah tutup.</p>
+
+<h2>Kesalahan umum saat membaca candle</h2>
+<ul>
+  <li><strong>Hanya melihat warna.</strong> Warna hijau atau merah tidak cukup. Lihat juga posisi candle terhadap tren dan level.</li>
+  <li><strong>Terlalu fokus pada timeframe kecil.</strong> Setiap candle M1 bisa terlihat meyakinkan, tetapi arah H4 bisa berlawanan.</li>
+  <li><strong>Mengharapkan setiap pola berhasil.</strong> Pola yang sama bisa gagal berkali-kali. Ukur hasilnya dalam jurnal, bukan dari ingatan.</li>
+</ul>
+
+<h2>Latihan</h2>
+<p>Buka grafik EURUSD di H4, tandai tiga candle terakhir yang sudah tutup. Tulis apakah tren naik, turun, atau sideways, lalu cari satu pola di dekat level penting. Bandingkan dengan grafik H1 pada periode yang sama.</p>
+
+<h2>Ringkasan modul ini</h2>
+<ul>
+  <li>Candle menunjukkan empat harga dalam satu periode: open, high, low, dan close.</li>
+  <li>Baca candle dengan urutan: timeframe, tren, level, pola, lalu konfirmasi.</li>
+  <li>Gunakan candle yang sudah tutup untuk keputusan, bukan candle yang masih berjalan.</li>
+</ul>
+
+<details class="check">
+  <summary>Mana yang lebih kuat untuk menentukan arah: H4 atau M5?</summary>
+  <p>Umumnya H4 lebih kuat untuk arah, karena setiap candle merangkum periode yang lebih panjang. M5 lebih berguna untuk mencari titik masuk setelah arah sudah jelas.</p>
+</details>
+
+<div class="complete-row">
+  <a class="btn btn-video" href="https://youtu.be/PS-XU2xFwTo?si=tEqgo-ZP17Gl6dSH" target="_blank" rel="noopener noreferrer"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg>Tonton video penjelasan modul 3</a>
+  <button type="button" class="btn btn-primary" data-complete="3" aria-pressed="false">Tandai modul ini selesai</button>
+  <a class="btn btn-ghost" href="kuis.html">Kerjakan kuis akhir</a>
+</div>
+</div>
+<nav class="steps-pager" aria-label="Navigasi modul">
+  <a href="modul-2.html"><small>Modul sebelumnya</small><span>Modul 2: Pasangan, pip, dan lot</span></a>
+  <a href="modul-4.html" class="next"><small>Modul berikutnya</small><span>Modul 4: Tren, support, dan resistance</span></a>
+</nav>
+</div></main>
+<dialog class="palette" id="palette" aria-label="Cari halaman">
+  <div class="palette-box">
+    <input class="search" id="paletteInput" type="search" placeholder="Cari halaman…" autocomplete="off" aria-label="Cari halaman">
+    <ul class="palette-list" id="paletteList"></ul>
+    <p class="palette-hint">Tekan Ctrl+K atau / untuk membuka pencarian.</p>
+  </div>
+</dialog>
+<footer class="site-footer">
+  <div class="wrap">
+    <div class="foot-grid">
+      <div>
+        <h3>Rangga Prasetio</h3>
+        <p>Edukasi forex untuk pemula, dengan fokus pada manajemen risiko dan kebiasaan belajar yang disiplin.</p>
+      </div>
+      <div>
+        <h3>Halaman</h3>
+        <ul>
+          <li><a href="belajar.html">Belajar forex</a></li>
+          <li><a href="portofolio.html">Portofolio</a></li>
+          <li><a href="kalkulator.html">Kalkulator posisi</a></li>
+          <li><a href="risiko.html">Peringatan risiko</a></li>
+        </ul>
+      </div>
+      <div>
+        <h3>Kontak</h3>
+        <ul>
+          <li><a href="mailto:ciomr3772@gmail.com">ciomr3772@gmail.com</a></li>
+          <li><a href="https://wa.me/6285196990449" rel="noopener">WhatsApp 0851-9699-0449</a></li>
+        </ul>
+      </div>
+    </div>
+    <p class="legal">Materi di situs ini bersifat edukasi dan bukan nasihat investasi. Forex dan CFD berisiko tinggi dan bisa menyebabkan kerugian sebagian atau seluruh modal. Baca <a href="risiko.html">peringatan risiko</a> sebelum mencoba trading.</p>
+    <p class="legal">&copy; 2026 Rangga Prasetio. Grafik pada situs ini adalah ilustrasi dari data simulasi.</p>
+  </div>
+</footer>
+<script src="assets/app.js" defer></script>
+<script src="assets/extras.js" defer></script>
+</body>
+</html>

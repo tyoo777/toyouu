@@ -1,0 +1,148 @@
+<!doctype html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Simulator risiko · Rangga Prasetio</title>
+<meta name="description" content="Simulasi Monte Carlo untuk melihat pengaruh win rate dan risk-reward.">
+<meta property="og:title" content="Simulator risiko · Rangga Prasetio">
+<meta property="og:description" content="Simulasi Monte Carlo untuk melihat pengaruh win rate dan risk-reward.">
+<meta property="og:type" content="website">
+<meta name="theme-color" content="#8b5cf6">
+<script>document.documentElement.classList.add("js");try{document.documentElement.setAttribute("data-theme",localStorage.getItem("rp-theme")==="light"?"light":"dark")}catch(e){document.documentElement.setAttribute("data-theme","dark")}</script>
+<link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&family=Sora:wght@500;600;700&display=swap">
+<link rel="stylesheet" href="assets/style.css">
+<script>try{var t=localStorage.getItem('rp-theme');if(t)document.documentElement.dataset.theme=t}catch(e){}</script>
+</head>
+<body>
+<a class="skip" href="#main">Lewati ke konten</a>
+<header class="site-header">
+  <div class="wrap bar">
+    <a class="brand" href="index.html" aria-label="Rangga Prasetio, beranda"><img class="brand-logo" src="assets/img/logo.jpg" width="44" height="44" alt="Logo Best Forex Trader"><span>Rangga Prasetio</span></a>
+    <nav class="nav" id="nav" aria-label="Menu utama"><a href="index.html">Beranda</a><a href="tentang.html">Tentang</a><a href="portofolio.html">Portofolio</a><a href="belajar.html">Belajar</a><a href="kalkulator.html" aria-current="page">Alat</a><a href="kontak.html">Kontak</a></nav>
+    <div class="tools">
+      <button class="icon-btn" id="searchBtn" type="button" aria-label="Cari halaman (Ctrl+K)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M11 4a7 7 0 1 0 0 14 7 7 0 0 0 0-14zM21 21l-4.3-4.3"/></svg></button>
+      <button class="icon-btn" id="themeToggle" type="button" aria-label="Ganti tema"></button>
+      <button class="icon-btn menu-btn" id="menuBtn" type="button" aria-expanded="false" aria-controls="nav">Menu</button>
+    </div>
+  </div>
+</header>
+<nav class="tabbar" aria-label="Navigasi cepat"><a href="index.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 11l9-7 9 7v9a1 1 0 0 1-1 1h-5v-6h-6v6H4a1 1 0 0 1-1-1z"/></svg><span>Beranda</span></a><a href="belajar.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 19.5V5a2 2 0 0 1 2-2h13v15H6a2 2 0 0 0-2 2zM4 19.5A2 2 0 0 0 6 22h13v-4"/></svg><span>Belajar</span></a><a href="portofolio.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 7h18v12H3zM9 7V5h6v2"/></svg><span>Portofolio</span></a><a href="kalkulator.html" aria-current="page"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 3h14v18H5zM8 7h8M8 12h2M14 12h2M8 16h2M14 16h2"/></svg><span>Alat</span></a><a href="kontak.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 5h18v14H3zM3 7l9 6 9-6"/></svg><span>Kontak</span></a></nav>
+<main id="main"><div class="wrap">
+<section class="page-head">
+  <p class="crumb"><a href="index.html">Beranda</a> / Simulator risiko</p>
+  <h1>Simulator risiko</h1>
+  <p>Atur win rate, rasio risk-reward, dan risiko per trade. Simulator menjalankan ratusan skenario acak untuk melihat sebaran hasilnya, bukan satu hasil tunggal.</p>
+</section>
+
+<section class="section">
+  <div class="tool">
+    <form class="card form" id="sim" autocomplete="off">
+      <div class="field">
+        <label for="simBal">Saldo awal (USD)</label>
+        <input class="input" id="simBal" type="number" min="1" step="any" value="5000" inputmode="decimal">
+      </div>
+      <div class="field">
+        <label for="simRisk">Risiko per trade (%)</label>
+        <input class="input" id="simRisk" type="number" min="0.1" max="100" step="0.1" value="1" inputmode="decimal">
+      </div>
+      <div class="field">
+        <label for="simWin">Win rate (%)</label>
+        <input class="input" id="simWin" type="number" min="0" max="100" step="1" value="45" inputmode="numeric">
+        <small>Persentase trade yang untung dari seluruh trade.</small>
+      </div>
+      <div class="field">
+        <label for="simRR">Rasio reward per risiko (R)</label>
+        <input class="input" id="simRR" type="number" min="0.1" step="0.1" value="2" inputmode="decimal">
+        <small>Nilai 2 berarti untung 2 kali lipat dari risiko.</small>
+      </div>
+      <div class="field">
+        <label for="simN">Jumlah trade per simulasi</label>
+        <input class="input" id="simN" type="number" min="10" max="500" step="1" value="100" inputmode="numeric">
+      </div>
+      <div class="field">
+        <label for="simRuns">Jumlah simulasi</label>
+        <input class="input" id="simRuns" type="number" min="100" max="1000" step="100" value="500" inputmode="numeric">
+      </div>
+      <div class="btn-row">
+        <button class="btn btn-ghost" id="simAgain" type="button">Jalankan ulang</button>
+      </div>
+    </form>
+
+    <div>
+      <div class="out-grid">
+        <div class="out hero-out"><span>Saldo akhir median</span><strong id="simMedian">–</strong></div>
+        <div class="out"><span>Skenario buruk (persentil 5)</span><strong id="simP5">–</strong></div>
+        <div class="out"><span>Skenario baik (persentil 95)</span><strong id="simP95">–</strong></div>
+        <div class="out"><span>Simulasi yang berakhir untung</span><strong id="simProfit">–</strong></div>
+        <div class="out"><span>Simulasi dengan drawdown 50% atau lebih</span><strong id="simDD">–</strong></div>
+        <div class="out"><span>Nilai harapan per trade</span><strong id="simEV">–</strong></div>
+      </div>
+      <div class="panel" style="margin-top:12px">
+        <h3>Jalur saldo</h3>
+        <p class="sub">Garis tipis adalah 40 jalur contoh. Garis tebal adalah median pada setiap langkah.</p>
+        <div class="chart-wrap">
+          <svg id="simSvg" role="img" aria-label="Jalur saldo hasil simulasi Monte Carlo"></svg>
+        </div>
+        <p class="sub" id="simNote" role="status"></p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="section-head">
+    <h2>Cara membaca hasilnya</h2>
+    <p>Satu hasil bagus tidak membuktikan strategi. Sebaran hasil itulah yang perlu dilihat.</p>
+  </div>
+  <div class="card stack">
+    <p><strong>Nilai harapan per trade (R)</strong> = win rate × rasio reward − (1 − win rate). Contoh: win rate 45% dan rasio 2 menghasilkan 0,45 × 2 − 0,55 = +0,35 R per trade.</p>
+    <p>Nilai harapan positif belum menjamin saldo naik. Dalam urutan trade yang pendek, rangkaian kalah bisa menurunkan saldo jauh di bawah rata-rata.</p>
+    <p>Karena itu simulator menunjukkan skenario buruk (persentil 5) dan drawdown. Jika skenario buruk tidak bisa Anda terima, turunkan risiko per trade.</p>
+    <p class="muted">Simulator ini memakai angka yang Anda masukkan. Hasilnya adalah gambaran probabilitas, bukan prediksi.</p>
+  </div>
+</section>
+
+</div></main>
+<dialog class="palette" id="palette" aria-label="Cari halaman">
+  <div class="palette-box">
+    <input class="search" id="paletteInput" type="search" placeholder="Cari halaman…" autocomplete="off" aria-label="Cari halaman">
+    <ul class="palette-list" id="paletteList"></ul>
+    <p class="palette-hint">Tekan Ctrl+K atau / untuk membuka pencarian.</p>
+  </div>
+</dialog>
+<footer class="site-footer">
+  <div class="wrap">
+    <div class="foot-grid">
+      <div>
+        <h3>Rangga Prasetio</h3>
+        <p>Edukasi forex untuk pemula, dengan fokus pada manajemen risiko dan kebiasaan belajar yang disiplin.</p>
+      </div>
+      <div>
+        <h3>Halaman</h3>
+        <ul>
+          <li><a href="belajar.html">Belajar forex</a></li>
+          <li><a href="portofolio.html">Portofolio</a></li>
+          <li><a href="kalkulator.html">Kalkulator posisi</a></li>
+          <li><a href="risiko.html">Peringatan risiko</a></li>
+        </ul>
+      </div>
+      <div>
+        <h3>Kontak</h3>
+        <ul>
+          <li><a href="mailto:ciomr3772@gmail.com">ciomr3772@gmail.com</a></li>
+          <li><a href="https://wa.me/6285196990449" rel="noopener">WhatsApp 0851-9699-0449</a></li>
+        </ul>
+      </div>
+    </div>
+    <p class="legal">Materi di situs ini bersifat edukasi dan bukan nasihat investasi. Forex dan CFD berisiko tinggi dan bisa menyebabkan kerugian sebagian atau seluruh modal. Baca <a href="risiko.html">peringatan risiko</a> sebelum mencoba trading.</p>
+    <p class="legal">&copy; 2026 Rangga Prasetio. Grafik pada situs ini adalah ilustrasi dari data simulasi.</p>
+  </div>
+</footer>
+<script src="assets/app.js" defer></script>
+<script src="assets/extras.js" defer></script>
+</body>
+</html>

@@ -1,0 +1,147 @@
+<!doctype html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Kalkulator posisi · Rangga Prasetio</title>
+<meta name="description" content="Hitung lot, nilai pip, dan margin dari risiko per trade.">
+<meta property="og:title" content="Kalkulator posisi · Rangga Prasetio">
+<meta property="og:description" content="Hitung lot, nilai pip, dan margin dari risiko per trade.">
+<meta property="og:type" content="website">
+<meta name="theme-color" content="#8b5cf6">
+<script>document.documentElement.classList.add("js");try{document.documentElement.setAttribute("data-theme",localStorage.getItem("rp-theme")==="light"?"light":"dark")}catch(e){document.documentElement.setAttribute("data-theme","dark")}</script>
+<link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&family=Sora:wght@500;600;700&display=swap">
+<link rel="stylesheet" href="assets/style.css">
+<script>try{var t=localStorage.getItem('rp-theme');if(t)document.documentElement.dataset.theme=t}catch(e){}</script>
+</head>
+<body>
+<a class="skip" href="#main">Lewati ke konten</a>
+<header class="site-header">
+  <div class="wrap bar">
+    <a class="brand" href="index.html" aria-label="Rangga Prasetio, beranda"><img class="brand-logo" src="assets/img/logo.jpg" width="44" height="44" alt="Logo Best Forex Trader"><span>Rangga Prasetio</span></a>
+    <nav class="nav" id="nav" aria-label="Menu utama"><a href="index.html">Beranda</a><a href="tentang.html">Tentang</a><a href="portofolio.html">Portofolio</a><a href="belajar.html">Belajar</a><a href="kalkulator.html" aria-current="page">Alat</a><a href="kontak.html">Kontak</a></nav>
+    <div class="tools">
+      <button class="icon-btn" id="searchBtn" type="button" aria-label="Cari halaman (Ctrl+K)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M11 4a7 7 0 1 0 0 14 7 7 0 0 0 0-14zM21 21l-4.3-4.3"/></svg></button>
+      <button class="icon-btn" id="themeToggle" type="button" aria-label="Ganti tema"></button>
+      <button class="icon-btn menu-btn" id="menuBtn" type="button" aria-expanded="false" aria-controls="nav">Menu</button>
+    </div>
+  </div>
+</header>
+<nav class="tabbar" aria-label="Navigasi cepat"><a href="index.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 11l9-7 9 7v9a1 1 0 0 1-1 1h-5v-6h-6v6H4a1 1 0 0 1-1-1z"/></svg><span>Beranda</span></a><a href="belajar.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 19.5V5a2 2 0 0 1 2-2h13v15H6a2 2 0 0 0-2 2zM4 19.5A2 2 0 0 0 6 22h13v-4"/></svg><span>Belajar</span></a><a href="portofolio.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 7h18v12H3zM9 7V5h6v2"/></svg><span>Portofolio</span></a><a href="kalkulator.html" aria-current="page"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 3h14v18H5zM8 7h8M8 12h2M14 12h2M8 16h2M14 16h2"/></svg><span>Alat</span></a><a href="kontak.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 5h18v14H3zM3 7l9 6 9-6"/></svg><span>Kontak</span></a></nav>
+<main id="main"><div class="wrap">
+<section class="page-head">
+  <p class="crumb"><a href="index.html">Beranda</a> / Kalkulator posisi</p>
+  <h1>Kalkulator posisi</h1>
+  <p>Masukkan saldo, risiko per trade, dan jarak stop loss. Kalkulator menghitung ukuran lot yang sesuai dengan risiko tersebut.</p>
+</section>
+
+<section class="section">
+  <div class="tool">
+    <form class="card form" id="calc" autocomplete="off">
+      <div class="field">
+        <label for="cBal">Saldo akun (USD)</label>
+        <input class="input" id="cBal" type="number" min="0" step="any" value="5000" inputmode="decimal">
+      </div>
+      <div class="field">
+        <label for="cRisk">Risiko per trade (%)</label>
+        <input class="input" id="cRisk" type="number" min="0.1" max="100" step="0.1" value="1" inputmode="decimal">
+        <small>Pemula sering memakai 0,5 sampai 1 persen.</small>
+      </div>
+      <div class="field">
+        <label for="cSL">Jarak stop loss (pip)</label>
+        <input class="input" id="cSL" type="number" min="1" step="0.1" value="20" inputmode="decimal">
+      </div>
+      <div class="field">
+        <label for="cRR">Rasio risk : reward (1 : …)</label>
+        <input class="input" id="cRR" type="number" min="0.5" step="0.1" value="2" inputmode="decimal">
+      </div>
+      <div class="field">
+        <label for="cPair">Jenis pasangan</label>
+        <select class="select" id="cPair">
+          <option value="usd">Quote USD (EURUSD, GBPUSD, AUDUSD)</option>
+          <option value="jpy">USDJPY</option>
+        </select>
+      </div>
+      <div class="field">
+        <label for="cPrice">Harga entry</label>
+        <input class="input" id="cPrice" type="number" min="0" step="any" value="1.0850" inputmode="decimal">
+        <small id="cRateHint" hidden>Untuk USDJPY, isi kurs USDJPY saat ini. Angka ini dipakai untuk menghitung nilai pip.</small>
+      </div>
+      <div class="field">
+        <label for="cLev">Leverage (1 : …)</label>
+        <input class="input" id="cLev" type="number" min="1" step="1" value="100" inputmode="numeric">
+      </div>
+    </form>
+
+    <div>
+      <div class="out-grid" id="outBox">
+        <div class="out hero-out"><span>Ukuran lot yang sesuai</span><strong id="oLot">–</strong></div>
+        <div class="out"><span>Risiko dalam USD</span><strong id="oRisk">–</strong></div>
+        <div class="out"><span>Nilai per pip (1 lot)</span><strong id="oPipVal">–</strong></div>
+        <div class="out"><span>Jumlah unit</span><strong id="oUnits">–</strong></div>
+        <div class="out" data-kind="loss"><span>Kerugian jika SL kena</span><strong id="oLoss">–</strong></div>
+        <div class="out" data-kind="reward"><span>Potensi untung (TP)</span><strong id="oReward">–</strong></div>
+        <div class="out"><span>Jarak take profit</span><strong id="oTP">–</strong></div>
+        <div class="out"><span>Margin dibutuhkan</span><strong id="oMargin">–</strong></div>
+      </div>
+      <p class="notice" id="oNote" role="status"></p>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="section-head">
+    <h2>Rumus yang dipakai</h2>
+    <p>Semua hitungan bisa dicek dengan tangan. Hasilnya dibulatkan ke bawah pada 0,01 lot.</p>
+  </div>
+  <div class="card stack">
+    <p><strong>Ukuran lot</strong> = risiko (USD) ÷ (jarak SL dalam pip × nilai pip per lot)</p>
+    <p><strong>Nilai pip per lot</strong>: untuk pasangan dengan USD di kanan seperti EURUSD, nilainya $10. Untuk USDJPY, nilainya 1.000 ÷ kurs USDJPY dalam USD.</p>
+    <p><strong>Margin</strong> = nilai posisi ÷ leverage. Nilai posisi untuk EURUSD adalah unit × harga, sedangkan untuk USDJPY adalah unit dalam USD.</p>
+    <p class="muted">Angka ini belum memperhitungkan spread, swap, dan slippage. Cek biaya di platform broker Anda.</p>
+  </div>
+</section>
+
+</div></main>
+<dialog class="palette" id="palette" aria-label="Cari halaman">
+  <div class="palette-box">
+    <input class="search" id="paletteInput" type="search" placeholder="Cari halaman…" autocomplete="off" aria-label="Cari halaman">
+    <ul class="palette-list" id="paletteList"></ul>
+    <p class="palette-hint">Tekan Ctrl+K atau / untuk membuka pencarian.</p>
+  </div>
+</dialog>
+<footer class="site-footer">
+  <div class="wrap">
+    <div class="foot-grid">
+      <div>
+        <h3>Rangga Prasetio</h3>
+        <p>Edukasi forex untuk pemula, dengan fokus pada manajemen risiko dan kebiasaan belajar yang disiplin.</p>
+      </div>
+      <div>
+        <h3>Halaman</h3>
+        <ul>
+          <li><a href="belajar.html">Belajar forex</a></li>
+          <li><a href="portofolio.html">Portofolio</a></li>
+          <li><a href="kalkulator.html">Kalkulator posisi</a></li>
+          <li><a href="risiko.html">Peringatan risiko</a></li>
+        </ul>
+      </div>
+      <div>
+        <h3>Kontak</h3>
+        <ul>
+          <li><a href="mailto:ciomr3772@gmail.com">ciomr3772@gmail.com</a></li>
+          <li><a href="https://wa.me/6285196990449" rel="noopener">WhatsApp 0851-9699-0449</a></li>
+        </ul>
+      </div>
+    </div>
+    <p class="legal">Materi di situs ini bersifat edukasi dan bukan nasihat investasi. Forex dan CFD berisiko tinggi dan bisa menyebabkan kerugian sebagian atau seluruh modal. Baca <a href="risiko.html">peringatan risiko</a> sebelum mencoba trading.</p>
+    <p class="legal">&copy; 2026 Rangga Prasetio. Grafik pada situs ini adalah ilustrasi dari data simulasi.</p>
+  </div>
+</footer>
+<script src="assets/app.js" defer></script>
+<script src="assets/extras.js" defer></script>
+</body>
+</html>
